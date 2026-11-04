@@ -41,7 +41,19 @@ footer { text-align:center; color:#64748b; padding:18px; font-size:.85rem; }
 <p>Semester I • Academic Year 2026/2027</p>
 </header>
 <main>
-<section class="panel">
+<section class="panel" id="digital-services">
+<h2>VHTTI Digital Services</h2>
+<p>Select a service to view or download the relevant document.</p>
+<div class="controls">
+<div class="service-card"><h3>🗓️ Class Timetable</h3><p>Find your weekly timetable by programme, level and class/stream.</p><button type="button" class="service-link" id="open-timetable">Choose / View Timetable</button></div>
+<div class="service-card"><h3>📅 Academic Calendar</h3><p>Academic year 2026/2027 calendar for all programmes.</p><a class="service-link" href="VHTTI_Almanac_2026-2027.pdf" target="_blank" rel="noopener">View / Download PDF</a></div>
+<div class="service-card"><h3>📝 Examination Timetable</h3><p>Semester I examination timetable, 2026/2027.</p><a class="service-link" href="Examination_Timetable_Semester_I_2026-2027.pdf" target="_blank" rel="noopener">View / Download PDF</a></div>
+<div class="service-card"><h3>📢 Announcements</h3><p>Official institutional announcements and notices.</p><a class="service-link" href="Graduation_Notice.pdf" target="_blank" rel="noopener">Graduation Notice • View PDF</a></div>
+<div class="service-card"><h3>💳 Fee Structure</h3><p>Fees and charges for academic year 2026/2027.</p><a class="service-link" href="Fee_Structure_2026-2027.pdf" target="_blank" rel="noopener">View / Download PDF</a></div>
+<div class="service-card"><h3>📄 Admission Forms</h3><p>Application form for academic year 2026/2027.</p><a class="service-link" href="Application_Form_2026-2027.pdf" target="_blank" rel="noopener">View / Download PDF</a></div>
+</div>
+<p class="note">Select a service to view or download its document. Documents open in a new browser tab.</p>
+<div id="timetable-panel" class="panel" hidden style="margin-top:18px">
 <h2>Find Your Class Timetable</h2>
 <div class="controls">
 <div><label for="program">1. Select Programme</label><select id="program"><option value="">Choose programme</option></select></div>
@@ -50,20 +62,8 @@ footer { text-align:center; color:#64748b; padding:18px; font-size:.85rem; }
 </div>
 <button id="view" disabled>View Timetable</button>
 <p class="note">Select your programme, level and class/stream where applicable. You can scroll horizontally to view the full timetable on a phone.</p>
-</section>
 <section id="result" class="panel" hidden></section>
-
-<section class="panel" id="digital-services">
-<h2>VHTTI Digital Services</h2>
-<p>Select a service to view or download the relevant document.</p>
-<div class="controls">
-<div class="service-card"><h3>📅 Academic Calendar</h3><p>Academic year 2026/2027 calendar for all programmes.</p><a class="service-link" href="VHTTI_Almanac_2026-2027.pdf" target="_blank" rel="noopener">View / Download PDF</a></div>
-<div class="service-card"><h3>📝 Examination Timetable</h3><p>Semester I examination timetable, 2026/2027.</p><a class="service-link" href="Examination_Timetable_Semester_I_2026-2027.pdf" target="_blank" rel="noopener">View / Download PDF</a></div>
-<div class="service-card"><h3>📢 Announcements</h3><p>Official institutional announcements and notices.</p><a class="service-link" href="Graduation_Notice.pdf" target="_blank" rel="noopener">Graduation Notice • View PDF</a></div>
-<div class="service-card"><h3>💳 Fee Structure</h3><p>Fees and charges for academic year 2026/2027.</p><a class="service-link" href="Fee_Structure_2026-2027.pdf" target="_blank" rel="noopener">View / Download PDF</a></div>
-<div class="service-card"><h3>📄 Admission Forms</h3><p>Application form for academic year 2026/2027.</p><a class="service-link" href="Application_Form_2026-2027.pdf" target="_blank" rel="noopener">View / Download PDF</a></div>
 </div>
-<p class="note">Class timetables are available above. Documents open in a new browser tab.</p>
 </section>
 
 </main>
@@ -75,6 +75,8 @@ const levelSelect=document.getElementById('level');
 const streamSelect=document.getElementById('stream');
 const viewButton=document.getElementById('view');
 const result=document.getElementById('result');
+const timetablePanel=document.getElementById('timetable-panel');
+document.getElementById('open-timetable').addEventListener('click',()=>{timetablePanel.hidden=!timetablePanel.hidden;if(!timetablePanel.hidden)timetablePanel.scrollIntoView({behavior:'smooth',block:'start'});});
 
 const uniquePrograms=[...new Set(timetableData.map(x=>x.program.replace(/ – Stream [12]$/,'')))].sort();
 uniquePrograms.forEach(p=>programSelect.add(new Option(p,p)));
