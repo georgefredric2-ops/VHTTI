@@ -274,6 +274,43 @@ footer {
 }
 .footer-bottom strong { color: var(--gold); }
 
+/* COMPACT ICONS */
+.card-icon { width:56px; height:56px; border-radius:15px; font-size:28px; margin-bottom:13px; }
+.card { padding:20px 17px 18px; }
+
+/* TIMETABLE SELECTOR MODAL - keeps the timetable off the page flow */
+.timetable-modal { display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center; padding:18px; }
+.timetable-modal.is-open { display:flex; }
+.timetable-modal-backdrop { position:absolute; inset:0; background:rgba(10,32,23,.62); }
+.timetable-dialog { position:relative; z-index:1; width:min(980px,100%); max-height:90vh; overflow:auto; background:#fff; border-radius:16px; border:1px solid var(--border); padding:22px; box-shadow:0 18px 60px rgba(0,0,0,.25); }
+.timetable-dialog-header { display:flex; justify-content:space-between; align-items:flex-start; gap:15px; }
+.timetable-heading { color:var(--deep-green); margin:0 0 5px; font-size:21px; }
+.timetable-note { color:var(--muted); margin:0 0 16px; font-size:13px; }
+.modal-close { border:0; background:#E7F3EA; color:var(--deep-green); border-radius:10px; width:36px; height:36px; font-size:25px; line-height:1; cursor:pointer; flex:0 0 auto; }
+.timetable-controls { display:flex; align-items:flex-end; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+.timetable-controls label { display:flex; flex-direction:column; gap:6px; color:var(--deep-green); font-weight:700; font-size:12px; min-width:150px; flex:1; }
+.timetable-controls select { font:inherit; color:var(--text); background:#F8FBF9; border:1px solid #C9DCCF; border-radius:8px; padding:10px; min-height:40px; width:100%; }
+.timetable-meta { display:flex; justify-content:space-between; gap:12px; color:var(--muted); font-size:12px; margin:0 0 10px; }
+.timetable-scroll { overflow:auto; max-width:100%; }
+.timetable { width:100%; min-width:700px; border-collapse:collapse; font-size:11px; }
+.timetable th { background:var(--deep-green); color:#fff; padding:9px 7px; text-align:left; }
+.timetable td { border:1px solid #DDE8E0; padding:7px; vertical-align:top; min-width:105px; }
+.timetable td:first-child { background:#F1F7F3; font-weight:700; min-width:90px; }
+.lesson-code { display:block; font-weight:800; color:var(--deep-green); margin-bottom:3px; }
+.lesson-name,.lesson-detail { display:block; line-height:1.45; margin-top:3px; }
+.activity-cell { background:#FFF5D6; text-align:center; font-weight:700; color:#795B00; }
+.free-cell { background:#F5F7F6; color:#87938C; text-align:center; }
+.timetable-empty { padding:18px; color:var(--muted); }
+@media(max-width:600px) {
+ .timetable-modal { padding:8px; align-items:center; }
+ .timetable-dialog { padding:14px; border-radius:13px; max-height:94vh; }
+ .timetable-controls { display:grid; grid-template-columns:1fr; gap:10px; }
+ .timetable-controls label { min-width:0; }
+ .timetable-controls .btn { width:100%; }
+ .timetable-heading { font-size:18px; }
+ .timetable-meta { font-size:11px; }
+}
+
 /* TABLET */
 @media (max-width: 900px) {
     .document-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -426,7 +463,7 @@ footer {
             <div class="card-icon icon-blue">🗓️</div>
             <h3>Class Timetable</h3>
             <p>Access class timetables by NTA Level, Programme and Stream.</p>
-            <span class="pending">Open Timetable Below</span>
+            <button type="button" class="btn btn-view timetable-choose" id="timetable-choose">Choose</button>
         </div>
 
         <!-- SHORT COURSES -->
@@ -466,22 +503,34 @@ footer {
 
     </div>
 
-<section class="timetable-panel" id="class-timetable">
-  <h2 class="timetable-heading">Class Timetable — Semester I, 2026/2027</h2>
-  <p class="timetable-note">Select the NTA Level and programme to view the weekly class schedule. Timetable information is presented from the institute's uploaded Excel schedules.</p>
-  <div class="timetable-controls">
-    <label for="timetable-level">NTA Level
-      <select id="timetable-level"><option value="NTA Level 4">NTA Level 4</option><option value="NTA Level 5">NTA Level 5</option><option value="NTA Level 6">NTA Level 6</option></select>
-    </label>
-    <label for="timetable-programme">Programme / Stream
-      <select id="timetable-programme"></select>
-    </label>
-  </div>
-  <div class="timetable-meta"><strong id="timetable-selection"></strong><span>Monday – Friday</span></div>
-  <div id="timetable-display" class="timetable-scroll" aria-live="polite"></div>
-</section>
+
 
 </main>
+
+<!-- CLASS TIMETABLE MODAL -->
+<div class="timetable-modal" id="timetable-modal" aria-hidden="true">
+  <div class="timetable-modal-backdrop" data-close-timetable></div>
+  <section class="timetable-dialog" role="dialog" aria-modal="true" aria-labelledby="timetable-heading">
+    <div class="timetable-dialog-header">
+      <div>
+        <h2 class="timetable-heading" id="timetable-heading">Class Timetable</h2>
+        <p class="timetable-note">Semester I • 2026/2027</p>
+      </div>
+      <button type="button" class="modal-close" id="timetable-close" aria-label="Close timetable">×</button>
+    </div>
+    <div class="timetable-controls">
+      <label for="timetable-level">NTA Level
+        <select id="timetable-level"><option value="NTA Level 4">NTA Level 4</option><option value="NTA Level 5">NTA Level 5</option><option value="NTA Level 6">NTA Level 6</option></select>
+      </label>
+      <label for="timetable-programme">Programme / Stream
+        <select id="timetable-programme"></select>
+      </label>
+      <button type="button" class="btn btn-view" id="timetable-view">View Timetable</button>
+    </div>
+    <div class="timetable-meta"><strong id="timetable-selection"></strong><span>Monday – Friday</span></div>
+    <div id="timetable-display" class="timetable-scroll" aria-live="polite"></div>
+  </section>
+</div>
 
 <footer>
     <div class="footer-content">
@@ -527,7 +576,7 @@ function updateProgrammes() {
     option.value = programme; option.textContent = programme;
     programmeSelect.appendChild(option);
   });
-  renderTimetable();
+  display.innerHTML = '<p class="timetable-empty">Choose a programme, then select View Timetable.</p>';
 }
 function renderTimetable() {
   const level = levelSelect.value, programme = programmeSelect.value;
@@ -557,8 +606,31 @@ function escapeTimetableText(value) {
   return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 }
 levelSelect.addEventListener("change", updateProgrammes);
-programmeSelect.addEventListener("change", renderTimetable);
+programmeSelect.addEventListener("change", () => { display.innerHTML = '<p class="timetable-empty">Select View Timetable to load the schedule.</p>'; });
+const timetableModal = document.getElementById("timetable-modal");
+const timetableChoose = document.getElementById("timetable-choose");
+const timetableView = document.getElementById("timetable-view");
+function openTimetableModal() {
+  timetableModal.classList.add("is-open");
+  timetableModal.setAttribute("aria-hidden","false");
+  document.body.style.overflow = "hidden";
+  updateProgrammes();
+}
+function closeTimetableModal() {
+  timetableModal.classList.remove("is-open");
+  timetableModal.setAttribute("aria-hidden","true");
+  document.body.style.overflow = "";
+}
+timetableChoose.addEventListener("click", openTimetableModal);
+document.getElementById("timetable-close").addEventListener("click", closeTimetableModal);
+timetableModal.querySelector("[data-close-timetable]").addEventListener("click", closeTimetableModal);
+timetableView.addEventListener("click", () => {
+  renderTimetable();
+  display.scrollIntoView({behavior:"smooth",block:"nearest"});
+});
+document.addEventListener("keydown", event => { if(event.key === "Escape") closeTimetableModal(); });
 updateProgrammes();
+display.innerHTML = '<p class="timetable-empty">Choose a programme, then select View Timetable.</p>';
 </script>
 
 </body>
