@@ -3,16 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>VHTTI Digital Portal</title>
 
 <style>
 :root {
-    --teal: #087E8B;
+    --green: #176B45;
+    --deep-green: #104B32;
+    --light-green: #EAF4ED;
+    --gold: #F4C542;
     --navy: #123B5D;
-    --yellow: #F4C542;
-    --light: #F3F7FA;
     --white: #FFFFFF;
+    --background: #F4F8F5;
     --text: #263746;
+    --muted: #718096;
+    --border: #E1EAE3;
 }
 
 * {
@@ -22,151 +27,234 @@
 body {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
-    background: var(--light);
+    background: var(--background);
     color: var(--text);
 }
 
+/* HEADER */
+
 header {
-    background: linear-gradient(135deg, var(--navy), var(--teal));
-    color: white;
-    padding: 28px 20px;
-    border-bottom: 5px solid var(--yellow);
+    background: linear-gradient(135deg, var(--deep-green), var(--green));
+    color: var(--white);
+    padding: 25px 20px;
+    border-bottom: 5px solid var(--gold);
 }
 
 .header-content {
-    max-width: 1150px;
+    max-width: 1200px;
     margin: auto;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 22px;
 }
 
 .logo {
-    width: 85px;
-    height: 85px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
-    background: white;
+    background: var(--white);
     border-radius: 12px;
     padding: 5px;
+    flex-shrink: 0;
 }
 
 .header-text h1 {
     margin: 0;
     font-size: 30px;
+    font-weight: 700;
 }
 
 .header-text p {
-    margin: 8px 0 0;
-    font-size: 15px;
+    margin: 7px 0 0;
+    font-size: 14px;
+    color: #E5F2E9;
 }
+
+/* HERO */
 
 .hero {
     text-align: center;
-    padding: 35px 20px 25px;
+    padding: 38px 20px 25px;
 }
 
 .hero h2 {
-    color: var(--navy);
-    margin-bottom: 10px;
+    color: var(--deep-green);
+    font-size: 27px;
+    margin: 0 0 12px;
 }
 
 .hero p {
-    color: #637381;
-    max-width: 650px;
+    color: var(--muted);
+    max-width: 700px;
     margin: auto;
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: 15px;
 }
+
+/* MAIN CONTENT */
 
 .container {
-    max-width: 1150px;
+    max-width: 1200px;
     margin: auto;
-    padding: 15px 20px 45px;
-}
-
-.section-title {
-    color: var(--navy);
-    margin: 25px 0 18px;
-    border-left: 5px solid var(--yellow);
-    padding-left: 12px;
+    padding: 20px 20px 55px;
 }
 
 .document-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
 }
 
+/* CARDS */
+
 .card {
-    background: white;
-    border-radius: 14px;
-    padding: 25px 20px;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 27px 22px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(18, 59, 93, 0.08);
-    border: 1px solid #e5edf2;
-    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid var(--border);
+    box-shadow: 0 5px 18px rgba(16, 75, 50, 0.07);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 22px rgba(18, 59, 93, 0.14);
+    box-shadow: 0 10px 25px rgba(16, 75, 50, 0.13);
 }
 
 .card-icon {
-    font-size: 42px;
-    margin-bottom: 15px;
+    width: 76px;
+    height: 76px;
+    border-radius: 18px;
+    background: var(--light-green);
+    color: var(--green);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 39px;
+    margin-bottom: 18px;
 }
 
 .card h3 {
-    color: var(--navy);
-    font-size: 17px;
+    color: var(--deep-green);
+    font-size: 18px;
+    line-height: 1.4;
     margin: 0 0 12px;
+    min-height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card p {
+    color: var(--muted);
     font-size: 13px;
-    color: #718096;
-    line-height: 1.5;
-    min-height: 38px;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    min-height: 42px;
 }
 
-.card a {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 10px 18px;
-    background: var(--teal);
-    color: white;
-    text-decoration: none;
-    border-radius: 7px;
+/* DOCUMENT BUTTONS */
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+    width: 100%;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 14px;
+    border-radius: 8px;
+
     font-size: 13px;
     font-weight: 600;
+    text-decoration: none;
+
+    transition: background 0.2s ease;
 }
 
-.card a:hover {
-    background: var(--navy);
+.btn-view {
+    background: var(--green);
+    color: var(--white);
 }
+
+.btn-view:hover {
+    background: var(--deep-green);
+}
+
+.btn-download {
+    background: var(--gold);
+    color: #263746;
+}
+
+.btn-download:hover {
+    background: #E5B629;
+}
+
+/* COMING SOON */
 
 .pending {
     display: inline-block;
-    margin-top: 12px;
-    padding: 8px 14px;
-    background: #fff5d6;
+    margin-top: auto;
+    padding: 10px 18px;
+    background: #FFF5D6;
     color: #856404;
-    border-radius: 20px;
+    border-radius: 25px;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
+/* FOOTER */
+
 footer {
-    background: var(--navy);
-    color: white;
+    background: var(--deep-green);
+    color: var(--white);
     text-align: center;
-    padding: 20px;
+    padding: 25px 20px;
     font-size: 13px;
+    border-top: 4px solid var(--gold);
+}
+
+footer p {
+    margin: 7px 0;
 }
 
 footer span {
-    color: var(--yellow);
+    color: var(--gold);
+    font-weight: 600;
 }
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .document-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .header-text h1 {
+        font-size: 26px;
+    }
+}
+
+/* MOBILE */
 
 @media (max-width: 600px) {
     .header-content {
@@ -174,13 +262,34 @@ footer span {
         text-align: center;
     }
 
+    .logo {
+        width: 80px;
+        height: 80px;
+    }
+
     .header-text h1 {
         font-size: 24px;
     }
 
-    .logo {
-        width: 75px;
-        height: 75px;
+    .hero {
+        padding: 30px 18px 20px;
+    }
+
+    .hero h2 {
+        font-size: 23px;
+    }
+
+    .container {
+        padding: 15px 15px 40px;
+    }
+
+    .document-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .card {
+        padding: 25px 20px;
     }
 }
 </style>
@@ -190,8 +299,9 @@ footer span {
 
 <header>
     <div class="header-content">
+
         <img src="VHTTI_VETA_Logo.jpg"
-             alt="VHTTI Logo"
+             alt="VHTTI VETA Logo"
              class="logo">
 
         <div class="header-text">
@@ -199,115 +309,277 @@ footer span {
             <p>VETA Hotel and Tourism Training Institute</p>
             <p>Njiro, Arusha, Tanzania</p>
         </div>
+
     </div>
 </header>
 
 <section class="hero">
+
     <h2>Welcome to the Digital Portal</h2>
+
     <p>
         Access important academic documents, institutional information,
         examination resources, and student services through one
         convenient digital platform.
     </p>
+
 </section>
 
 <main class="container">
 
-    <h2 class="section-title">Academic & Institutional Documents</h2>
-
     <div class="document-grid">
 
+        <!-- ACADEMIC CALENDAR -->
+
         <div class="card">
+
             <div class="card-icon">📅</div>
+
             <h3>Academic Calendar</h3>
-            <p>Academic calendar for the 2026/2027 academic year.</p>
-            <a href="Academic_Calendar_2026-2027.pdf"
-               target="_blank">View Document</a>
+
+            <p>
+                Academic calendar for the 2026/2027 academic year.
+            </p>
+
+            <div class="card-actions">
+
+                <a href="Academic_Calendar_2026-2027.pdf"
+                   target="_blank"
+                   class="btn btn-view">
+                    👁 View Document
+                </a>
+
+                <a href="Academic_Calendar_2026-2027.pdf"
+                   download
+                   class="btn btn-download">
+                    ⬇ Download
+                </a>
+
+            </div>
+
         </div>
 
+        <!-- GRADUATION NOTICE -->
+
         <div class="card">
+
             <div class="card-icon">🎓</div>
+
             <h3>Graduation Notice</h3>
-            <p>Access the official graduation notice.</p>
-            <a href="Graduation_Notice.pdf"
-               target="_blank">View Document</a>
+
+            <p>
+                Access the official graduation notice.
+            </p>
+
+            <div class="card-actions">
+
+                <a href="Graduation_Notice.pdf"
+                   target="_blank"
+                   class="btn btn-view">
+                    👁 View Document
+                </a>
+
+                <a href="Graduation_Notice.pdf"
+                   download
+                   class="btn btn-download">
+                    ⬇ Download
+                </a>
+
+            </div>
+
         </div>
 
+        <!-- FEE STRUCTURE -->
+
         <div class="card">
+
             <div class="card-icon">💰</div>
+
             <h3>Fee Structure</h3>
-            <p>Tuition and other fees for the 2026/2027 academic year.</p>
-            <a href="Fee_Structure_2026-2027.pdf"
-               target="_blank">View Document</a>
-        
+
+            <p>
+                Tuition and other fees for the 2026/2027 academic year.
+            </p>
+
+            <div class="card-actions">
+
+                <a href="Fee_Structure_2026-2027.pdf"
+                   target="_blank"
+                   class="btn btn-view">
+                    👁 View Document
+                </a>
+
+                <a href="Fee_Structure_2026-2027.pdf"
+                   download
+                   class="btn btn-download">
+                    ⬇ Download
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- APPLICATION AND ADMISSION GUIDE -->
+
         <div class="card">
+
             <div class="card-icon">📘</div>
+
             <h3>Application & Admission Guide</h3>
-            <p>Application procedures and admission guidelines.</p>
-            <a href="Application_Form_and_Admission_Guide_2026-2027.pdf"
-               target="_blank">View Document</a>
+
+            <p>
+                Application procedures and admission guidelines.
+            </p>
+
+            <div class="card-actions">
+
+                <a href="Application_Form_and_Admission_Guide_2026-2027.pdf"
+                   target="_blank"
+                   class="btn btn-view">
+                    👁 View Document
+                </a>
+
+                <a href="Application_Form_and_Admission_Guide_2026-2027.pdf"
+                   download
+                   class="btn btn-download">
+                    ⬇ Download
+                </a>
+
+            </div>
+
         </div>
 
+        <!-- EXAMINATION TIMETABLE -->
+
         <div class="card">
+
             <div class="card-icon">📋</div>
+
             <h3>Examination Timetable</h3>
-            <p>Semester I examination timetable for 2026/2027.</p>
-            <a href="Examination_Timetable_Semester_I_2026-2027.pdf"
-               target="_blank">View Document</a>
+
+            <p>
+                Semester I examination timetable for 2026/2027.
+            </p>
+
+            <div class="card-actions">
+
+                <a href="Examination_Timetable_Semester_I_2026-2027.pdf"
+                   target="_blank"
+                   class="btn btn-view">
+                    👁 View Document
+                </a>
+
+                <a href="Examination_Timetable_Semester_I_2026-2027.pdf"
+                   download
+                   class="btn btn-download">
+                    ⬇ Download
+                </a>
+
+            </div>
+
         </div>
 
-    </div>
-
-    <h2 class="section-title">Academic Programmes</h2>
-
-   <div class="document-grid">
-
-    <!-- CLASS TIMETABLE -->
-    <div class="card">
-        <div class="card-icon">🗓️</div>
-        <h3>Class Timetable</h3>
-        <p>Access class timetables by NTA Level, Programme and Stream.</p>
-        <span class="pending">System Coming Soon</span>
-    </div>
-
-    <!-- SHORT COURSES -->
-    <div class="card">
-        <div class="card-icon">📘</div>
-        <h3>Short Courses</h3>
-        <p>Explore short course programmes offered by VHTTI.</p>
-        <a href="VHTTI_Short_Courses_Tangazo.pdf" target="_blank" class="btn">
-            View Short Courses Leaflet
-        </a>
-    </div>
-
-</div>
-</div>
-
-    </div>
-
-    <h2 class="section-title">Institutional Resources</h2>
-
-    <div class="document-grid">
+        <!-- CLASS TIMETABLE -->
 
         <div class="card">
+
+            <div class="card-icon">🗓️</div>
+
+            <h3>Class Timetable</h3>
+
+            <p>
+                Access class timetables by NTA Level,
+                Programme and Stream.
+            </p>
+
+            <span class="pending">
+                System Coming Soon
+            </span>
+
+        </div>
+
+        <!-- SHORT COURSES -->
+
+        <div class="card">
+
+            <div class="card-icon">📘</div>
+
+            <h3>Short Courses</h3>
+
+            <p>
+                Explore short course programmes offered by VHTTI.
+            </p>
+
+            <div class="card-actions">
+
+                <a href="VHTTI_Short_Courses_Tangazo.pdf"
+                   target="_blank"
+                   class="btn btn-view">
+                    👁 View Leaflet
+                </a>
+
+                <a href="VHTTI_Short_Courses_Tangazo.pdf"
+                   download
+                   class="btn btn-download">
+                    ⬇ Download
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- EXAMINATION POLICY -->
+
+        <div class="card">
+
             <div class="card-icon">📖</div>
+
             <h3>Examination Policy</h3>
-            <p>Institutional examination policies and regulations.</p>
-            <span class="pending">Document Coming Soon</span>
+
+            <p>
+                Institutional examination policies and regulations.
+            </p>
+
+            <span class="pending">
+                Document Coming Soon
+            </span>
+
         </div>
 
+        <!-- INDUSTRIAL ATTACHMENT -->
+
         <div class="card">
+
             <div class="card-icon">🏨</div>
+
             <h3>Industrial Attachment</h3>
-            <p>Industrial attachment information and guidelines.</p>
-            <span class="pending">Document Coming Soon</span>
+
+            <p>
+                Industrial attachment information and guidelines.
+            </p>
+
+            <span class="pending">
+                Document Coming Soon
+            </span>
+
         </div>
 
+        <!-- CODES OF CONDUCT -->
+
         <div class="card">
+
             <div class="card-icon">📜</div>
+
             <h3>VHTTI Codes of Conduct</h3>
-            <p>Institutional codes of conduct and regulations.</p>
-            <span class="pending">Document Coming Soon</span>
+
+            <p>
+                Institutional codes of conduct and regulations.
+            </p>
+
+            <span class="pending">
+                Document Coming Soon
+            </span>
+
         </div>
 
     </div>
@@ -315,11 +587,17 @@ footer span {
 </main>
 
 <footer>
+
     <p>
-        &copy; 2026 <span>VHTTI Digital Portal</span> |
+        &copy; 2026
+        <span>VHTTI Digital Portal</span> |
         VETA Hotel and Tourism Training Institute
     </p>
-    <p>Excellence in Hotel and Tourism Training</p>
+
+    <p>
+        Excellence in Hotel and Tourism Training
+    </p>
+
 </footer>
 
 </body>
