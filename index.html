@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VHTTI Digital Portal</title>
+
+<style>
+:root {
+    --teal: #087E8B;
+    --navy: #123B5D;
+    --yellow: #F4C542;
+    --light: #F3F7FA;
+    --white: #FFFFFF;
+    --text: #263746;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--light);
+    color: var(--text);
+}
+
+header {
+    background: linear-gradient(135deg, var(--navy), var(--teal));
+    color: white;
+    padding: 28px 20px;
+    border-bottom: 5px solid var(--yellow);
+}
+
+.header-content {
+    max-width: 1150px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    background: white;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.header-text h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.header-text p {
+    margin: 8px 0 0;
+    font-size: 15px;
+}
+
+.hero {
+    text-align: center;
+    padding: 35px 20px 25px;
+}
+
+.hero h2 {
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #637381;
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 15px 20px 45px;
+}
+
+.section-title {
+    color: var(--navy);
+    margin: 25px 0 18px;
+    border-left: 5px solid var(--yellow);
+    padding-left: 12px;
+}
+
+.document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(18, 59, 93, 0.08);
+    border: 1px solid #e5edf2;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 22px rgba(18, 59, 93, 0.14);
+}
+
+.card-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: var(--navy);
+    font-size: 17px;
+    margin: 0 0 12px;
+}
+
+.card p {
+    font-size: 13px;
+    color: #718096;
+    line-height: 1.5;
+    min-height: 38px;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    background: var(--teal);
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.card a:hover {
+    background: var(--navy);
+}
+
+.pending {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 14px;
+    background: #fff5d6;
+    color: #856404;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+footer {
+    background: var(--navy);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+}
+
+footer span {
+    color: var(--yellow);
+}
+
+@media (max-width: 600px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-text h1 {
+        font-size: 24px;
+    }
+
+    .logo {
+        width: 75px;
+        height: 75px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <img src="VHTTI_VETA_Logo.jpg"
+             alt="VHTTI Logo"
+             class="logo">
+
+        <div class="header-text">
+            <h1>VHTTI Digital Portal</h1>
+            <p>VETA Hotel and Tourism Training Institute</p>
+            <p>Njiro, Arusha, Tanzania</p>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <h2>Welcome to the Digital Portal</h2>
+    <p>
+        Access important academic documents, institutional information,
+        examination resources, and student services through one
+        convenient digital platform.
+    </p>
+</section>
+
+<main class="container">
+
+    <h2 class="section-title">Academic & Institutional Documents</h2>
+
+    <div class="document-grid">
+
+        <div class="card">
+            <div class="card-icon">📅</div>
+            <h3>Academic Calendar</h3>
+            <p>Academic calendar for the 2026/2027 academic year.</p>
+            <a href="Academic_Calendar_2026-2027.pdf"
+               target="_blank">View Document</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🎓</div>
+            <h3>Graduation Notice</h3>
+            <p>Access the official graduation notice.</p>
+            <a href="Graduation_Notice.pdf"
+               target="_blank">View Document</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">💰</div>
+            <h3>Fee Structure</h3>
+            <p>Tuition and other fees for the 2026/2027 academic year.</p>
+            <a href="Fee_Structure_2026-2027.pdf"
+               target="_blank">View Document</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📝</div>
+            <h3>Application Form</h3>
+            <p>Application form for prospective students.</p>
+            <a href="Application_Form_2026-2027.pdf"
+               target="_blank">View Document</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📘</div>
+            <h3>Application & Admission Guide</h3>
+            <p>Application procedures and admission guidelines.</p>
+            <a href="Application_Form_and_Admission_Guide_2026-2027.pdf"
+               target="_blank">View Document</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📋</div>
+            <h3>Examination Timetable</h3>
+            <p>Semester I examination timetable for 2026/2027.</p>
+            <a href="Examination_Timetable_Semester_I_2026-2027.pdf"
+               target="_blank">View Document</a>
+        </div>
+
+    </div>
+
+    <h2 class="section-title">Academic Programmes</h2>
+
+    <div class="document-grid">
+
+        <div class="card">
+            <div class="card-icon">📊</div>
+            <h3>Basic Technician Certificate – NTA Level 4</h3>
+            <p>Continuous assessment records and programme sheets.</p>
+            <a href="Basic Technician Certificate NTA 4(1).xlsx"
+               target="_blank">Open Excel File</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📈</div>
+            <h3>Technician Certificate – NTA Level 5</h3>
+            <p>Continuous assessment records and programme sheets.</p>
+            <a href="Technician Certificate NTA 5(1).xlsx"
+               target="_blank">Open Excel File</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📚</div>
+            <h3>Ordinary Diploma – NTA Level 6</h3>
+            <p>Continuous assessment records and programme sheets.</p>
+            <a href="Ordinary Diploma NTA 6(1).xlsx"
+               target="_blank">Open Excel File</a>
+        </div>
+
+    </div>
+
+    <h2 class="section-title">Institutional Resources</h2>
+
+    <div class="document-grid">
+
+        <div class="card">
+            <div class="card-icon">📖</div>
+            <h3>Examination Policy</h3>
+            <p>Institutional examination policies and regulations.</p>
+            <span class="pending">Document Coming Soon</span>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🏨</div>
+            <h3>Industrial Attachment</h3>
+            <p>Industrial attachment information and guidelines.</p>
+            <span class="pending">Document Coming Soon</span>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📜</div>
+            <h3>VHTTI Codes of Conduct</h3>
+            <p>Institutional codes of conduct and regulations.</p>
+            <span class="pending">Document Coming Soon</span>
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>
+        &copy; 2026 <span>VHTTI Digital Portal</span> |
+        VETA Hotel and Tourism Training Institute
+    </p>
+    <p>Excellence in Hotel and Tourism Training</p>
+</footer>
+
+</body>
+</html>
