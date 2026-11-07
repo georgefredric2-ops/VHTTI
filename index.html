@@ -3,294 +3,297 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>VHTTI Digital Portal</title>
 
 <style>
 :root {
     --green: #176B45;
     --deep-green: #104B32;
-    --light-green: #EAF4ED;
+    --soft-green: #E7F3EA;
     --gold: #F4C542;
     --navy: #123B5D;
+    --soft-blue: #E8F0F8;
+    --soft-gold: #FFF5D6;
     --white: #FFFFFF;
     --background: #F4F8F5;
     --text: #263746;
-    --muted: #718096;
+    --muted: #6B7B88;
     --border: #E1EAE3;
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
-    background: var(--background);
     color: var(--text);
+    background: var(--background);
 }
 
-/* HEADER */
-
+/* INSTITUTIONAL HEADER */
 header {
-    background: linear-gradient(135deg, var(--deep-green), var(--green));
     color: var(--white);
-    padding: 25px 20px;
+    background: linear-gradient(120deg, var(--deep-green), var(--green));
     border-bottom: 5px solid var(--gold);
+    padding: 24px 20px;
 }
 
 .header-content {
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     gap: 22px;
 }
 
+.logo-wrap {
+    width: 96px;
+    height: 96px;
+    flex: 0 0 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 7px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.12);
+}
+
 .logo {
-    width: 90px;
-    height: 90px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    background: var(--white);
-    border-radius: 12px;
-    padding: 5px;
-    flex-shrink: 0;
 }
 
 .header-text h1 {
     margin: 0;
-    font-size: 30px;
-    font-weight: 700;
+    font-size: clamp(23px, 3vw, 32px);
+    line-height: 1.25;
+    font-weight: 750;
 }
 
-.header-text p {
+.header-text .institution {
     margin: 7px 0 0;
-    font-size: 14px;
-    color: #E5F2E9;
+    color: #EAF5ED;
+    font-size: 15px;
 }
 
-/* HERO */
+.header-text .motto {
+    margin: 8px 0 0;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .4px;
+}
 
+/* WELCOME */
 .hero {
     text-align: center;
-    padding: 38px 20px 25px;
+    padding: 36px 20px 24px;
 }
 
 .hero h2 {
     color: var(--deep-green);
-    font-size: 27px;
+    font-size: clamp(22px, 3vw, 28px);
     margin: 0 0 12px;
 }
 
 .hero p {
+    max-width: 720px;
+    margin: 0 auto;
     color: var(--muted);
-    max-width: 700px;
-    margin: auto;
-    line-height: 1.7;
     font-size: 15px;
+    line-height: 1.7;
 }
 
-/* MAIN CONTENT */
-
+/* RESOURCE GRID */
 .container {
     max-width: 1200px;
-    margin: auto;
-    padding: 20px 20px 55px;
+    margin: 0 auto;
+    padding: 18px 20px 48px;
 }
 
 .document-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
+    gap: 22px;
     align-items: stretch;
 }
 
-/* CARDS */
-
 .card {
     background: var(--white);
-    border-radius: 16px;
-    padding: 27px 22px;
-    text-align: center;
     border: 1px solid var(--border);
-    box-shadow: 0 5px 18px rgba(16, 75, 50, 0.07);
-
+    border-radius: 17px;
+    padding: 26px 22px 24px;
+    min-width: 0;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    transition: transform 0.25s ease,
-                box-shadow 0.25s ease;
+    box-shadow: 0 5px 18px rgba(16, 75, 50, .06);
+    transition: transform .22s ease, box-shadow .22s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(16, 75, 50, 0.13);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(16, 75, 50, .12);
 }
 
+/* DISTINCT ICON BACKGROUNDS - NOT WHITE */
 .card-icon {
     width: 76px;
     height: 76px;
-    border-radius: 18px;
-    background: var(--light-green);
-    color: var(--green);
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    font-size: 39px;
-    margin-bottom: 18px;
+    border-radius: 20px;
+    font-size: 38px;
+    margin-bottom: 17px;
 }
 
-.card h3 {
-    color: var(--deep-green);
-    font-size: 18px;
-    line-height: 1.4;
-    margin: 0 0 12px;
-    min-height: 50px;
+.icon-green { background: var(--soft-green); }
+.icon-gold  { background: var(--soft-gold); }
+.icon-blue  { background: var(--soft-blue); }
+.icon-deep  { background: #DCECE3; }
 
+.card h3 {
+    min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 0 10px;
+    color: var(--deep-green);
+    font-size: 17px;
+    line-height: 1.4;
 }
 
 .card p {
+    min-height: 44px;
+    margin: 0 0 20px;
     color: var(--muted);
     font-size: 13px;
     line-height: 1.6;
-    margin: 0 0 20px;
-    min-height: 42px;
 }
 
-/* DOCUMENT BUTTONS */
-
+/* VIEW AND DOWNLOAD ACTIONS */
 .card-actions {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    margin-top: auto;
     width: 100%;
+    margin-top: auto;
 }
 
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    padding: 10px 14px;
+    gap: 5px;
+    min-height: 39px;
+    padding: 10px 13px;
     border-radius: 8px;
-
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 12.5px;
+    font-weight: 700;
     text-decoration: none;
-
-    transition: background 0.2s ease;
+    border: 1px solid transparent;
+    transition: background .2s ease, transform .2s ease;
 }
+
+.btn:hover { transform: translateY(-1px); }
 
 .btn-view {
+    color: #FFFFFF;
     background: var(--green);
-    color: var(--white);
 }
-
-.btn-view:hover {
-    background: var(--deep-green);
-}
+.btn-view:hover { background: var(--deep-green); }
 
 .btn-download {
+    color: var(--navy);
     background: var(--gold);
-    color: #263746;
 }
-
-.btn-download:hover {
-    background: #E5B629;
-}
-
-/* COMING SOON */
+.btn-download:hover { background: #E7B82F; }
 
 .pending {
     display: inline-block;
     margin-top: auto;
-    padding: 10px 18px;
-    background: #FFF5D6;
-    color: #856404;
-    border-radius: 25px;
+    padding: 10px 17px;
+    color: #795B00;
+    background: var(--soft-gold);
+    border: 1px solid #F0D982;
+    border-radius: 24px;
     font-size: 12px;
     font-weight: 700;
 }
 
-/* FOOTER */
-
+/* CONTACT FOOTER */
 footer {
+    color: #FFFFFF;
     background: var(--deep-green);
-    color: var(--white);
-    text-align: center;
-    padding: 25px 20px;
-    font-size: 13px;
-    border-top: 4px solid var(--gold);
+    border-top: 5px solid var(--gold);
+    padding: 30px 20px 22px;
 }
 
-footer p {
-    margin: 7px 0;
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 28px;
+    align-items: start;
 }
 
-footer span {
+.footer-title {
     color: var(--gold);
-    font-weight: 600;
+    margin: 0 0 10px;
+    font-size: 17px;
 }
+
+.footer-address, .footer-contact {
+    color: #E7F2EA;
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.footer-contact a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.footer-contact a:hover { color: var(--gold); }
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 22px auto 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,.18);
+    text-align: center;
+    color: #DCEBE1;
+    font-size: 12px;
+    line-height: 1.7;
+}
+.footer-bottom strong { color: var(--gold); }
 
 /* TABLET */
-
 @media (max-width: 900px) {
-    .document-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
-    }
-
-    .header-text h1 {
-        font-size: 26px;
-    }
+    .document-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .footer-content { grid-template-columns: 1fr 1fr; }
 }
 
 /* MOBILE */
-
 @media (max-width: 600px) {
     .header-content {
         flex-direction: column;
         text-align: center;
+        gap: 14px;
     }
-
-    .logo {
-        width: 80px;
-        height: 80px;
-    }
-
-    .header-text h1 {
-        font-size: 24px;
-    }
-
-    .hero {
-        padding: 30px 18px 20px;
-    }
-
-    .hero h2 {
-        font-size: 23px;
-    }
-
-    .container {
-        padding: 15px 15px 40px;
-    }
-
-    .document-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .card {
-        padding: 25px 20px;
-    }
+    .logo-wrap { width: 82px; height: 82px; flex-basis: 82px; }
+    .header-text .institution { font-size: 13px; }
+    .hero { padding: 28px 18px 20px; }
+    .container { padding: 14px 15px 36px; }
+    .document-grid { grid-template-columns: 1fr; gap: 17px; }
+    .card { padding: 24px 20px; }
+    .footer-content { grid-template-columns: 1fr; text-align: center; gap: 20px; }
 }
 </style>
 </head>
@@ -299,305 +302,155 @@ footer span {
 
 <header>
     <div class="header-content">
-
-        <img src="VHTTI_VETA_Logo.jpg"
-             alt="VHTTI VETA Logo"
-             class="logo">
-
+        <div class="logo-wrap">
+            <img src="VHTTI_VETA_Logo.png" alt="VETA Logo" class="logo">
+        </div>
         <div class="header-text">
             <h1>VHTTI Digital Portal</h1>
-            <p>VETA Hotel and Tourism Training Institute</p>
-            <p>Njiro, Arusha, Tanzania</p>
+            <p class="institution">VETA Hotel and Tourism Training Institute</p>
+            <p class="motto">VHTTI — The Home of Hospitality</p>
         </div>
-
     </div>
 </header>
 
 <section class="hero">
-
     <h2>Welcome to the Digital Portal</h2>
-
     <p>
         Access important academic documents, institutional information,
         examination resources, and student services through one
         convenient digital platform.
     </p>
-
 </section>
 
 <main class="container">
-
     <div class="document-grid">
 
         <!-- ACADEMIC CALENDAR -->
-
         <div class="card">
-
-            <div class="card-icon">📅</div>
-
+            <div class="card-icon icon-green">📅</div>
             <h3>Academic Calendar</h3>
-
-            <p>
-                Academic calendar for the 2026/2027 academic year.
-            </p>
-
+            <p>Academic calendar for the 2026/2027 academic year.</p>
             <div class="card-actions">
-
-                <a href="Academic_Calendar_2026-2027.pdf"
-                   target="_blank"
-                   class="btn btn-view">
-                    👁 View Document
-                </a>
-
-                <a href="Academic_Calendar_2026-2027.pdf"
-                   download
-                   class="btn btn-download">
-                    ⬇ Download
-                </a>
-
+                <a href="Academic_Calendar_2026-2027.pdf" target="_blank" rel="noopener" class="btn btn-view">👁 View Document</a>
+                <a href="Academic_Calendar_2026-2027.pdf" download class="btn btn-download">⬇ Download</a>
             </div>
-
         </div>
 
         <!-- GRADUATION NOTICE -->
-
         <div class="card">
-
-            <div class="card-icon">🎓</div>
-
+            <div class="card-icon icon-gold">🎓</div>
             <h3>Graduation Notice</h3>
-
-            <p>
-                Access the official graduation notice.
-            </p>
-
+            <p>Access the official graduation notice.</p>
             <div class="card-actions">
-
-                <a href="Graduation_Notice.pdf"
-                   target="_blank"
-                   class="btn btn-view">
-                    👁 View Document
-                </a>
-
-                <a href="Graduation_Notice.pdf"
-                   download
-                   class="btn btn-download">
-                    ⬇ Download
-                </a>
-
+                <a href="Graduation_Notice.pdf" target="_blank" rel="noopener" class="btn btn-view">👁 View Document</a>
+                <a href="Graduation_Notice.pdf" download class="btn btn-download">⬇ Download</a>
             </div>
-
         </div>
 
         <!-- FEE STRUCTURE -->
-
         <div class="card">
-
-            <div class="card-icon">💰</div>
-
+            <div class="card-icon icon-blue">💰</div>
             <h3>Fee Structure</h3>
-
-            <p>
-                Tuition and other fees for the 2026/2027 academic year.
-            </p>
-
+            <p>Tuition and other fees for the 2026/2027 academic year.</p>
             <div class="card-actions">
-
-                <a href="Fee_Structure_2026-2027.pdf"
-                   target="_blank"
-                   class="btn btn-view">
-                    👁 View Document
-                </a>
-
-                <a href="Fee_Structure_2026-2027.pdf"
-                   download
-                   class="btn btn-download">
-                    ⬇ Download
-                </a>
-
+                <a href="Fee_Structure_2026-2027.pdf" target="_blank" rel="noopener" class="btn btn-view">👁 View Document</a>
+                <a href="Fee_Structure_2026-2027.pdf" download class="btn btn-download">⬇ Download</a>
             </div>
-
         </div>
 
         <!-- APPLICATION AND ADMISSION GUIDE -->
-
         <div class="card">
-
-            <div class="card-icon">📘</div>
-
-            <h3>Application & Admission Guide</h3>
-
-            <p>
-                Application procedures and admission guidelines.
-            </p>
-
+            <div class="card-icon icon-deep">📘</div>
+            <h3>Application &amp; Admission Guide</h3>
+            <p>Application procedures and admission guidelines.</p>
             <div class="card-actions">
-
-                <a href="Application_Form_and_Admission_Guide_2026-2027.pdf"
-                   target="_blank"
-                   class="btn btn-view">
-                    👁 View Document
-                </a>
-
-                <a href="Application_Form_and_Admission_Guide_2026-2027.pdf"
-                   download
-                   class="btn btn-download">
-                    ⬇ Download
-                </a>
-
+                <a href="Application_Form_and_Admission_Guide_2026-2027.pdf" target="_blank" rel="noopener" class="btn btn-view">👁 View Document</a>
+                <a href="Application_Form_and_Admission_Guide_2026-2027.pdf" download class="btn btn-download">⬇ Download</a>
             </div>
-
         </div>
 
         <!-- EXAMINATION TIMETABLE -->
-
         <div class="card">
-
-            <div class="card-icon">📋</div>
-
+            <div class="card-icon icon-gold">📋</div>
             <h3>Examination Timetable</h3>
-
-            <p>
-                Semester I examination timetable for 2026/2027.
-            </p>
-
+            <p>Semester I examination timetable for 2026/2027.</p>
             <div class="card-actions">
-
-                <a href="Examination_Timetable_Semester_I_2026-2027.pdf"
-                   target="_blank"
-                   class="btn btn-view">
-                    👁 View Document
-                </a>
-
-                <a href="Examination_Timetable_Semester_I_2026-2027.pdf"
-                   download
-                   class="btn btn-download">
-                    ⬇ Download
-                </a>
-
+                <a href="Examination_Timetable_Semester_I_2026-2027.pdf" target="_blank" rel="noopener" class="btn btn-view">👁 View Document</a>
+                <a href="Examination_Timetable_Semester_I_2026-2027.pdf" download class="btn btn-download">⬇ Download</a>
             </div>
-
         </div>
 
         <!-- CLASS TIMETABLE -->
-
         <div class="card">
-
-            <div class="card-icon">🗓️</div>
-
+            <div class="card-icon icon-blue">🗓️</div>
             <h3>Class Timetable</h3>
-
-            <p>
-                Access class timetables by NTA Level,
-                Programme and Stream.
-            </p>
-
-            <span class="pending">
-                System Coming Soon
-            </span>
-
+            <p>Access class timetables by NTA Level, Programme and Stream.</p>
+            <span class="pending">System Coming Soon</span>
         </div>
 
         <!-- SHORT COURSES -->
-
         <div class="card">
-
-            <div class="card-icon">📘</div>
-
+            <div class="card-icon icon-green">📘</div>
             <h3>Short Courses</h3>
-
-            <p>
-                Explore short course programmes offered by VHTTI.
-            </p>
-
+            <p>Explore short course programmes offered by VHTTI.</p>
             <div class="card-actions">
-
-                <a href="VHTTI_Short_Courses_Tangazo.pdf"
-                   target="_blank"
-                   class="btn btn-view">
-                    👁 View Leaflet
-                </a>
-
-                <a href="VHTTI_Short_Courses_Tangazo.pdf"
-                   download
-                   class="btn btn-download">
-                    ⬇ Download
-                </a>
-
+                <a href="VHTTI_Short_Courses_Tangazo.pdf" target="_blank" rel="noopener" class="btn btn-view">👁 View Leaflet</a>
+                <a href="VHTTI_Short_Courses_Tangazo.pdf" download class="btn btn-download">⬇ Download</a>
             </div>
-
         </div>
 
         <!-- EXAMINATION POLICY -->
-
         <div class="card">
-
-            <div class="card-icon">📖</div>
-
+            <div class="card-icon icon-deep">📖</div>
             <h3>Examination Policy</h3>
-
-            <p>
-                Institutional examination policies and regulations.
-            </p>
-
-            <span class="pending">
-                Document Coming Soon
-            </span>
-
+            <p>Institutional examination policies and regulations.</p>
+            <span class="pending">Document Coming Soon</span>
         </div>
 
         <!-- INDUSTRIAL ATTACHMENT -->
-
         <div class="card">
-
-            <div class="card-icon">🏨</div>
-
+            <div class="card-icon icon-blue">🏨</div>
             <h3>Industrial Attachment</h3>
-
-            <p>
-                Industrial attachment information and guidelines.
-            </p>
-
-            <span class="pending">
-                Document Coming Soon
-            </span>
-
+            <p>Industrial attachment information and guidelines.</p>
+            <span class="pending">Document Coming Soon</span>
         </div>
 
         <!-- CODES OF CONDUCT -->
-
         <div class="card">
-
-            <div class="card-icon">📜</div>
-
+            <div class="card-icon icon-gold">📜</div>
             <h3>VHTTI Codes of Conduct</h3>
-
-            <p>
-                Institutional codes of conduct and regulations.
-            </p>
-
-            <span class="pending">
-                Document Coming Soon
-            </span>
-
+            <p>Institutional codes of conduct and regulations.</p>
+            <span class="pending">Document Coming Soon</span>
         </div>
 
     </div>
-
 </main>
 
 <footer>
+    <div class="footer-content">
+        <div>
+            <h3 class="footer-title">VETA Hotel and Tourism Training Institute</h3>
+            <p class="footer-address">
+                Block J, Plot No. 262, Njiro<br>
+                P.O. Box 1434<br>
+                Arusha, Tanzania
+            </p>
+        </div>
+        <div>
+            <h3 class="footer-title">Contact Us</h3>
+            <p class="footer-contact">
+                Email:
+                <a href="mailto:vhtti@veta.go.tz">vhtti@veta.go.tz</a>
+            </p>
+            <p class="footer-contact">VHTTI — The Home of Hospitality</p>
+        </div>
+    </div>
 
-    <p>
-        &copy; 2026
-        <span>VHTTI Digital Portal</span> |
-        VETA Hotel and Tourism Training Institute
-    </p>
-
-    <p>
+    <div class="footer-bottom">
+        &copy; 2026 <strong>VHTTI Digital Portal</strong> |
+        VETA Hotel and Tourism Training Institute<br>
         Excellence in Hotel and Tourism Training
-    </p>
-
+    </div>
 </footer>
 
 </body>
